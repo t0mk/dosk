@@ -27,11 +27,13 @@ dops is more pretty listing of runnign containers.
 
 docker ps is ugly:
 
-- It's too wide - the listing lines span multiple lines in my 80-char terminal window
-- It's difficult to read - it takes time to find the ID of a container of the image you want. 
-- It doesn't show IP addresses of the containers.
+* It's too wide - the listing lines span multiple lines in my 80-char terminal window
+* It's difficult to read - it takes time to find the ID of a container of the image you want. 
+* It doesn't show IP addresses of the containers.
 
 I wrote this simple tool in Go which prints running containers in colors.
+
+![How it looks](http://i.imgur.com/wyjHrrP.png)
 
 ## denter
 
@@ -39,5 +41,4 @@ If you have running container and you want to have a shell in it for checking st
 
 If you run it witouht parameters, you will get shell in the latest run container.
 
-![How it looks](http://i.imgur.com/wyjHrrP.png)
 

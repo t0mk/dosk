@@ -8,7 +8,7 @@ To use this, just put this directory to your PATH.
 
 ```
 $ go build dops.go -o dops
-$ sh getcompose.se
+$ sh getcompose.sh
 ```
 
 ## Install
@@ -39,6 +39,4 @@ I wrote this simple tool in Go which prints running containers in colors.
 
 If you have running container and you want to have a shell in it for checking stuff, then you might appreciate this script which allows to connect to a container by mathcing substring in docker ps output.
 
-If you run it witouht parameters, you will get shell in the latest run container.
-
-
+E.g. `denter fe` will open you an interactive bash in a container with ID fe[...]. If you run only `denter`, you will get bash in the latest run container. If you have several containers running and only one of them has name or image called "drupal", you can connect to it by `denter drup`.

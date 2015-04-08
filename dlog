@@ -19,4 +19,4 @@ if [[ ! "$CID" =~ "^[a-f0-9]{2,64}$" ]]; then
     fi
 fi
 
-docker exec -it $CID bash || docker exec -it $CID sh
+docker logs -f $CID

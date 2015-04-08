@@ -16,7 +16,10 @@ $ sh getcompose.sh
 Just put it to PATH, so sth like this from you home dir:
 
 ```
+# if you're on Linux:
 git clone https://github.com/t0mk/dosk
+# if you're on OSX:
+git clone -b osx https://github.com/t0mk/dosk
 [ -L .bashrc ] && rm .bashrc
 echo 'export PATH=${PATH}:${HOME}/dosk' >> .bashrc
 ```

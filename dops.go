@@ -46,6 +46,7 @@ func getNewColor(m *map[string]struct{}, old string) string {
 	var picked string
 	for c, _ := range *m {
 		picked = c
+		break
 	}
 	delete(*m, picked)
 	(*m)[old] = struct{}{}

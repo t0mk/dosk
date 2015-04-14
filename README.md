@@ -7,8 +7,8 @@ To use this, just put this directory to your PATH.
 ## Build
 
 ```
-$ go build dops.go -o dops
-$ sh getcompose.sh
+$ GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -o dops dops.go
+$ ./getcompose.sh
 ```
 
 ## Install

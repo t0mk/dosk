@@ -46,4 +46,4 @@ E.g. `denter fe` will open you an interactive bash in a container with ID fe[...
 
 ## dlog
 
-This is `tail -f` on a container specified by fuzzy name like in denet.
+This is `tail -f` on a container specified by fuzzy name like in denter.

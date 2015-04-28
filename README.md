@@ -38,6 +38,8 @@ I wrote this simple tool in Go which prints running containers in colors.
 
 ![How it looks](http://i.imgur.com/wyjHrrP.png)
 
+The colors are random. For some cool effects do `watch -c -n 0.2 dops`.
+
 ## denter
 
 If you have running container and you want to have a shell in it for checking stuff, then you might appreciate this script which allows to connect to a container by mathcing substring in docker ps output.

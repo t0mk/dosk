@@ -2,7 +2,9 @@
 
 CID=$1
 
-[ -z "$CID" ] && CID=$(docker ps -lq)
+[ -z "$CID" ] && CID=`docker ps -ql`
+
+[ `docker ps -q | wc -l` -eq 1 ] && CID=`docker ps -q`
 
 if [[ ! "$CID" =~ "^[a-f0-9]{2,64}$" ]]; then
     NEW_ID=`docker ps | grep $CID | grep -v grep | awk -e '{print $1;}'`

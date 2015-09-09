@@ -8,7 +8,6 @@ To use this, just put this directory to your PATH.
 
 ```
 $ go build dops.go -o dops
-$ sh getcompose.sh
 ```
 
 ## Install

@@ -11,6 +11,14 @@ import (
 	"github.com/samalba/dockerclient"
 )
 
+func getIPs(es map[string]dockerclient.EndpointSettings) []string {
+	s := []string{}
+	for _, v := range es {
+		s = append(s, v.IPAddress)
+	}
+	return s
+}
+
 func getPorts(ps []dockerclient.Port) []string {
 	if len(ps) == 0 {
 		s := make([]string, 1)
@@ -85,7 +93,8 @@ func main() {
 			log.Fatal(err)
 		}
 		portlines := getPorts(c.Ports)
-		line := c.Id[:4] + "\t" + first(25, c.Image) + "\t" + cc.NetworkSettings.IpAddress + "\t" + portlines[0] + "\t" + first(20, cc.Name)
+		ips := getIPs(c.NetworkSettings.Networks)
+		line := c.Id[:4] + "\t" + first(25, c.Image) + "\t" + ips[0] + "\t" + portlines[0] + "\t" + first(20, cc.Name)
 
 		fmt.Fprintln(w, colorize(line))
 		if len(portlines) > 1 {

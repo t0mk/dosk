@@ -5,7 +5,7 @@ CID=$1
 [ -z "$CID" ] && CID=$(docker ps -lq)
 
 if [[ ! "$CID" =~ "^[a-f0-9]{2,64}$" ]]; then
-    NEW_ID=`docker ps -a | grep $CID | grep -v grep | awk -e '{print $1;}'`
+    NEW_ID=`docker ps -a | grep $CID | grep -v grep | awk '{print $1;}'`
     NUM_LINES=`echo $NEW_ID | wc -l`
     if [ -z "$NEW_ID" ]; then
         echo "no container like $CID"

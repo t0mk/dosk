@@ -43,7 +43,8 @@ type ColorFunc func(string) string
 
 func first(x int, s string) string {
 	if x > len(s) {
-		return s[:len(s)]
+		//return s[:len(s)]
+		return s
 	} else {
 		return s[:x]
 	}
@@ -52,7 +53,7 @@ func first(x int, s string) string {
 func getNewColor(m *map[string]struct{}, old string) string {
 	// the range for map is random
 	var picked string
-	for c, _ := range *m {
+	for c := range *m {
 		picked = c
 		break
 	}
@@ -79,11 +80,11 @@ func main() {
 	w := new(tabwriter.Writer)
 	usedColor := "red"
 	w.Init(os.Stdout, 0, 2, 1, ' ', 0)
-	fmt.Fprintln(w, "ID\tImage\tIP\tPorts\tName")
+	fmt.Fprintln(w, "ID\tImage\tIP\tPorts\tState\tName")
 	other_colors := map[string]struct{}{
-		"blue":  struct{}{},
-		"green": struct{}{},
-		"cyan":  struct{}{}}
+		"blue":  {},
+		"green": {},
+		"cyan":  {}}
 
 	for _, c := range containers {
 		newColor := getNewColor(&other_colors, usedColor)
@@ -94,7 +95,10 @@ func main() {
 		}
 		portlines := getPorts(c.Ports)
 		ips := getIPs(c.NetworkSettings.Networks)
-		line := c.Id[:4] + "\t" + first(25, c.Image) + "\t" + ips[0] + "\t" + portlines[0] + "\t" + first(20, cc.Name)
+		line := c.Id[:4] + "\t" + first(25, c.Image) + "\t" +
+			ips[0] + "\t" + portlines[0] + "\t" +
+			c.Status +
+			first(20, cc.Name)
 
 		fmt.Fprintln(w, colorize(line))
 		if len(portlines) > 1 {
